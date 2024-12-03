@@ -1,6 +1,7 @@
 package org.example.todolist.controller;
 
 import org.example.todolist.Repo.TodoListRepository;
+import org.example.todolist.exception.NotFoundException;
 import org.example.todolist.model.TodoItem;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -124,7 +125,7 @@ public class TodoListControllerTest {
     public void should_throw_exception_when_getById_given_invalid_todo_item_id() throws Exception {
         client.perform(MockMvcRequestBuilders.get("/todolist/100"))
                 .andExpect(status().isInternalServerError())
-                .andExpect(result -> assertThat(result.getResolvedException()).isInstanceOf(RuntimeException.class))
-                .andExpect(result -> assertThat(result.getResolvedException().getMessage()).isEqualTo("This Todo not existed"));
+                .andExpect(result -> assertThat(result.getResolvedException()).isInstanceOf(NotFoundException.class))
+                .andExpect(result -> assertThat(result.getResolvedException().getMessage()).isEqualTo("Todo item not found"));
     }
 }
