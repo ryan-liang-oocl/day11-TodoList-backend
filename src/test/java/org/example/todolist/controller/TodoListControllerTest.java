@@ -126,6 +126,6 @@ public class TodoListControllerTest {
         client.perform(MockMvcRequestBuilders.get("/todolist/100"))
                 .andExpect(status().isInternalServerError())
                 .andExpect(result -> assertThat(result.getResolvedException()).isInstanceOf(NotFoundException.class))
-                .andExpect(result -> assertThat(result.getResolvedException().getMessage()).isEqualTo("Todo item not found"));
+                .andExpect(result -> assertThat(result.getResolvedException().getMessage()).isEqualTo("This todo item does not exist"));
     }
 }

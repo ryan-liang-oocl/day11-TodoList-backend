@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class TodoListService {
-    public static final String TODO_ITEM_NOT_FOUND_MSG = "Todo item not found";
+    public static final String TODO_ITEM_NOT_FOUND_MSG = "This todo item does not exist";
     @Autowired
     private TodoListRepository todoListRepository;
     public List<TodoItem> getAll() {
